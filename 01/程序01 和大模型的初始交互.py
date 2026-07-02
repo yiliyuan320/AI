@@ -2,12 +2,11 @@ import  os
 import dotenv
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 
-
-# 将.env文件加载到环境变量里面
-dotenv.load_dotenv()
 from langchain_openai import ChatOpenAI
 from langchain.chat_models import init_chat_model
 
+# 将.env文件加载到环境变量里面
+dotenv.load_dotenv()
 
 base_url =os.getenv("BASE_URL")
 
@@ -34,10 +33,13 @@ response_2 = [
     {"role":"user","content":"生成测试用例的规范"}
 ]
 
-# langchain规范格式
+# langchain规范格式 对象
 Message = [
+    # 系统角色(提示词)：设定角色或者背景描述
     SystemMessage(content="你是一个测试工程师"),
+    # 用户(提示词)：提出的问题
     HumanMessage(content="生成测试用例的规范"),
+    # AI(提示词)：上下文
     AIMessage(content="生成测试用例的规范")
 ]
 
